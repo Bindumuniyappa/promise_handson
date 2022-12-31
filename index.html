@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Promise Handson</h1>
+    <h2>
+      1.Write one example explaining how you can write a callback function.
+    </h2>
+    <pre style="color: brown; font-size: 20px">
+function age(a,b){
+    return a+b;
+}
+function detail(name,age){
+    console.log(`${name},${age}`)
+}
+detail("bindu",age(10,12));</pre
+    >
+    <h2>
+      2."Write a callback function to print numbers from 1 to 7, in which 1
+      should be printed after 1 sec, 2 should be printed after 2 sec, 3 should
+      be printed after 3 sec, and so on. Explain callback hell. Numbers 1 2 3 4
+      5 6 7"
+    </h2>
+    <pre style="color: brown; font-size: 20px">
+setTimeout(() => {
+let count=1;
+    console.log(count++);
+    setTimeout(() => {
+        console.log(count++);
+        setTimeout(() => {
+            console.log(count++);
+            setTimeout(() => {
+                console.log(count++);
+                setTimeout(() => {
+                    console.log(count++);
+                    setTimeout(() => {
+                        console.log(count++);
+                        setTimeout(() => {
+                            console.log(count++);
+                        }, 7000);
+                    }, 6000);
+                }, 5000);
+            }, 4000);
+        }, 3000);
+    }, 2000);
+}, 1000);</pre
+    >
+    <h2>
+      3."Write the promise function to print numbers from 1 to 7, in which 1
+      should be printed after 1 sec, 2 should be printed after 2 sec, 3 should
+      be printed after 3 sec, and so on. Numbers 1 2 3 4 5 6 7"
+    </h2>
+    <pre style="color: brown; font-size: 20px">
+function callback1(cb){
+    for(let i =1;i&lt=7;i++){
+        cb(i);
+    }
+}
+callback1(function cb(i){
+    setTimeout(()=>{
+        console.log(i);
+    },i*1000);
+});</pre
+    >
+    <h2>
+      4."Create a promise function accepting an argument, if yes is passed to
+      the function then it should go to resolved state and print Promise
+      Resolved, and if nothing is passed then it should go to reject the state
+      and catch the error and print Promise Rejected "
+    </h2>
+    <pre style="color: brown; font-size: 20px">
+const newPromise=new Promise((resolve,reject) => {
+    let batch="EA18";
+    if(batch==="EA18"){
+        resolve("Welcome to batch EA18");
+    }
+    else{
+        reject("please try again later");
+    }
+})
+
+newPromise.then((x)=>{
+    console.log(x)
+}).catch((x)=>{
+    console.log(x);
+})
+</pre
+    >
+    <h2>5.Create examples to explain callback function</h2>
+    <pre style="color: brown; font-size: 20px">
+A callback is a function passed as an argument to another function.
+ex:-function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);</pre
+    >
+    <h2>6.Create examples to explain callback hell function</h2>
+    <pre style="color: brown; font-size: 20px">
+Callback Hell is essentially nested callbacks stacked below one another forming a pyramid structure.
+Every callback depends/waits for the previous callback, thereby making a pyramid structure 
+that affects the readability and maintainability of the code. 
+ex:-const animateAll = (animate) => {
+        setTimeout(() => {
+            animate(words[0]);
+            setTimeout(() => {
+                animate(words[1]);
+                setTimeout(() => {
+                    animate(words[2]);
+                }, 1000)
+            }, 1000)
+        }, 1000)
+    }
+  
+    const animate = (word) => {
+        word.classList.add("animate");
+    }
+  
+    animateAll(animate);</pre
+    >
+    <h2>7.Create examples to explain promises function</h2>
+    <pre style="color: brown; font-size: 20px">
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+new Promise((resolveOuter) => {
+  resolveOuter(
+    new Promise((resolveInner) => {
+      setTimeout(resolveInner, 1000);
+    })
+  );
+});</pre
+    >
+    <h2>8.Create examples to explain async await function</h2>
+    <pre style="color: brown; font-size: 20px">
+The keyword async before a function makes the function return a promise.
+ex:-async function myFunction() {
+  return "Hello";
+}
+myFunction().then(
+  function(value) {myDisplayer(value);}
+);
+
+
+The await keyword makes the function pause the execution and wait for a resolved promise before it continues.
+ex:-
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve, reject) {
+    resolve("prepBytes!!");
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();</pre
+    >
+    <h2>9.Create examples to explain promise.all function</h2>
+    <pre style="color: brown; font-size: 20px">
+The Promise.all() method takes an iterable of promises as input and returns a single Promise. 
+ex:-const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'foo');
+});
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});</pre
+    >
+    <script src="script.js"></script>
+  </body>
+</html>
